@@ -101,7 +101,6 @@ pipeline {
         success {
           script {
             echo 'DONE'
-            }
         }
     }
 }
