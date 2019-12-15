@@ -16,7 +16,7 @@ from botocore.config import Config
 #
 ## Variables
 #
-keypair_prefix='jenkins_temp_key_'
+keypair_prefix='jenkins-user-aws'
 instance_prefix='jenkins_temp_key_'
 stack_prefix='jenkins_temp_stack_'
 sg_id='sg-c832efba'
