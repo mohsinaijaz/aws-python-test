@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
 
     stages {
         stage('Build') {
@@ -14,6 +14,7 @@ pipeline {
                 steps {
                   script {
                    echo 'python3'
+                   sh script: /python3.6 ec2.py
                    }
                 } //steps
         } // Build AWS AMI stage
