@@ -1,0 +1,109 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                  echo 'building'
+                }
+            }
+        }
+
+        stage('Build AWS AMI') {
+                stage('Test Standard AMI') {
+                    steps {
+                      sh 'python ec2.py'
+                        }
+                    }
+        } // Build AWS AMI stage
+
+        stage('Approval') {
+            when {
+                expression { params.Nightly != "true" }
+                  }
+                    steps {
+                        input message: "Publish AMI"
+                } // steps
+        } //stage
+
+        stage('Share AMI') {
+          when {
+            expression { params.Nightly != "true" }
+              }
+              parallel {
+                stage('Share EAST') {
+                    steps {
+                        script {
+                          echo 'share east'
+                        }
+                    }
+                }
+                stage('Share WEST') {
+                    steps {
+                        script {
+                          echo 'share west'
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Publish AMI') {
+          when {
+            expression { params.Nightly != "true" }
+              }
+              steps {
+                script {
+                  echo 'publish ami'
+                }
+            }
+        }
+
+        stage('Publish Package List') {
+          when {
+            expression { params.Nightly != "true" }
+              }
+              steps {
+                script {
+                  echo 'list package'
+                }
+            }
+        }
+
+        stage('Unshare expired AMIs') {
+          when {
+            expression { params.Nightly != "true" }
+              }
+              parallel {
+                stage('Unshare EAST') {
+                    steps {
+                      script {
+                        echo 'unshare east'
+                      }
+                    }
+                }
+                stage('Unshare WEST') {
+                    steps {
+                        script {
+                          echo 'unshare west'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        aborted {
+            script {
+                echo 'Not Done'
+            }
+        }
+        success {
+          script {
+            echo 'DONE'
+            }
+        }
+    }
+}
