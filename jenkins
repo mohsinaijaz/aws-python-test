@@ -1,0 +1,20 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+    environment {
+        AWS_ACCESS_KEY = credentials('jenkins-user-aws')
+        AWS_DEFAULT_REGION = 'us-east-1'
+        AWS_ACCESS_KEY_ID = "${JENKINS_USER_AWS_USR}"
+        AWS_SECRET_ACCESS_KEY = "${JENKINS_USER_AWS_PSW}"
+    }
+    stages {
+        stage('Test AMI') {
+            steps {
+                wrap([$class: 'MaskPasswordsBuildWrapper']) {
+                        sh script: /python3.6 ec2.py /
+                }
+            }
+        }
+    }
+}

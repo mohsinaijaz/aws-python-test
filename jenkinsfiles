@@ -2,6 +2,8 @@ pipeline {
     agent { docker { image 'python:3.5.1' } }
     environment {
        PATH = "$PATH:/usr/local/bin/docker-compose"
+       AWS_ACCESS_KEY_ID = credentials('	jenkins-user-aws-id')
+       AWS_SECRET_ACCESS_KEY = credentials('	jenkins-user-aws-key')
    }
   stages {
         stage('Build') {
