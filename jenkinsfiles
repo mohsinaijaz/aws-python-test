@@ -1,7 +1,9 @@
 pipeline {
     agent { docker { image 'python:3.5.1' } }
-
-    stages {
+    environment {
+       PATH = "$PATH:/usr/local/bin/docker-compose"
+   }
+  stages {
         stage('Build') {
             steps {
               sh 'python --version'
