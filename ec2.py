@@ -3,7 +3,7 @@ import random, string
 import json
 import re
 import subprocess
-#import paramiko
+import paramiko
 import sys
 import os
 try:
