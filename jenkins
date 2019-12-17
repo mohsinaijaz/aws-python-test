@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Test AMI') {
             steps {
-              sh 'python3.7 ec2.py'
+              sh 'python ec2.py'
             }
         }
     }
