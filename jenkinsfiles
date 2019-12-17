@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build AWS AMI') {
                 steps {
-                   sh script: /python3.7 ec2.py/
+                   sh script: /python ec2.py/
                 } //steps
         } // Build AWS AMI stage
 
