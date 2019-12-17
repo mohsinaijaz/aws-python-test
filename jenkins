@@ -11,9 +11,7 @@ pipeline {
     stages {
         stage('Test AMI') {
             steps {
-                wrap([$class: 'MaskPasswordsBuildWrapper']) {
-                  sh 'python3.7 ec2.py'
-                }
+              sh 'python3.7 ec2.py'
             }
         }
     }
