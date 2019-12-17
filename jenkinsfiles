@@ -1,9 +1,12 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent any
     environment {
-       PATH = "$PATH:/usr/local/bin/docker-compose"
-       AWS_ACCESS_KEY_ID = credentials('	jenkins-user-aws-id')
-       AWS_SECRET_ACCESS_KEY = credentials('	jenkins-user-aws-key')
+        AWS_ACCESS_KEY = credentials('JenkinsUser')
+
+
+       AWS_DEFAULT_REGION = 'us-east-1'
+       AWS_ACCESS_KEY_ID = "${AWS_ACCESS_KEY_USR}"
+       AWS_SECRET_ACCESS_KEY = "${AWS_ACCESS_KEY_PSW}"
    }
   stages {
         stage('Build') {
@@ -14,7 +17,7 @@ pipeline {
 
         stage('Build AWS AMI') {
                 steps {
-                   sh 'python3.7 ec2.py'
+                   sh script: /python3.7 ec2.py/
                 } //steps
         } // Build AWS AMI stage
 
