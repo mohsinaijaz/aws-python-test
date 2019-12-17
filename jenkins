@@ -1,0 +1,20 @@
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+    environment {
+        AWS_ACCESS_KEY = credentials('JenkinsUser')
+
+
+        AWS_DEFAULT_REGION = 'us-east-1'
+        AWS_ACCESS_KEY_ID = "${AWS_ACCESS_KEY_USR}"
+        AWS_SECRET_ACCESS_KEY = "${AWS_ACCESS_KEY_PSW}"
+    }
+    stages {
+        stage('Test AMI') {
+            steps {
+              sh script: /python ec2.py/
+            }
+        }
+    }
+}
