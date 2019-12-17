@@ -3,10 +3,10 @@
 pipeline {
     agent any
     environment {
-        AWS_ACCESS_KEY = credentials('jenkins-user-aws')
+        AWS_ACCESS_KEY = credentials('JenkinsUser')
         AWS_DEFAULT_REGION = 'us-east-1'
-        AWS_ACCESS_KEY_ID = "${JENKINS_USER_AWS_USR}"
-        AWS_SECRET_ACCESS_KEY = "${JENKINS_USER_AWS_PSW}"
+        AWS_ACCESS_KEY_ID = "${JenkinsUser_USR}"
+        AWS_SECRET_ACCESS_KEY = "${JenkinsUser_PSW}"
     }
     stages {
         stage('Test AMI') {

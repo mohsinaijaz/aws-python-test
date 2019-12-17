@@ -3,7 +3,7 @@ import random, string
 import json
 import re
 import subprocess
-import paramiko
+#import paramiko
 import sys
 import os
 try:
@@ -17,8 +17,8 @@ from botocore.config import Config
 ## Variables
 #
 keypair_prefix='jenkins-user-aws'
-instance_prefix='jenkins_temp_key_'
-stack_prefix='jenkins_temp_stack_'
+#instance_prefix='jenkins_temp_key_'
+#stack_prefix='jenkins_temp_stack_'
 sg_id='sg-c832efba'
 source_ami ='ami-000db10762d0c4c05'
 #source_ami = sys.argv[1]
@@ -152,28 +152,7 @@ def test_services(ec2_ip=None, secret_key=None):
     nessus_scan(ec2_ip)
     clean_up(instance_id,key_name)
     ssh_shell.close()
-#
-#
-#def nessus_scan(ec2_ip):
-#    '''
-#    Run Nessus Scan
-#    '''
-#    nessus_scan_params = ("%s '%s' '%s' '%s' '%s'" %(nessus_scan_path,nessus_login,nessus_password,scan_id,ec2_ip))
-#    #nessus_scan_params = ("exit 1")
-#    if (os.system(nessus_scan_params) != 0):
-#        clean_up(instance_id,key_name)
-#        exit_on_fail(nessus_scan_path)
-#
-#    '''
-#    Run vulnerability scan
-#    '''
-#    nessus_scan_params = ("%s '%s' '%s' '%s' '%s'" %(nessus_scan_path,nessus_login,nessus_password,vulnerability_scan_id,ec2_ip))
-#    #nessus_scan_params = ("exit 1")
-#    if (os.system(nessus_scan_params) != 0):
-#        clean_up(instance_id,key_name)
-#        exit_on_fail(nessus_scan_path)
-#
-#
+
 def create_dynamic_instance(random_variable=None):
     '''
     Creates Dynamic EC2 Instance for Test
