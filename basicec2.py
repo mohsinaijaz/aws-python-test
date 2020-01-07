@@ -1,16 +1,16 @@
 import os
 import boto3
 
-AMI = 'ami-000db10762d0c4c05'
-INSTANCE_TYPE = 't2.micro'
-KEY_NAME = 'K8testkey'
-SUBNET_ID = 'subnet-4802dd03'
+AMI='ami-000db10762d0c4c05'
+INSTANCE_TYPE='t2.micro'
+KEY_NAME='K8testkey'
+SUBNET_ID='subnet-4802dd03'
 
 ec2 = boto3.resource('ec2')
 
 def instance_one(event, context):
 
-    instance = ec2.create_instance(
+    instance = ec2.create_instances(
         ImageId=AMI,
         InstanceType=INSTANCE_TYPE,
         KeyName=KEY_NAME,
