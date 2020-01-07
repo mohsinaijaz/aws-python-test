@@ -14,7 +14,7 @@ def instance_one(event, context):
         ImageId=AMI,
         InstanceType=INSTANCE_TYPE,
         KeyName=KEY_NAME,
-        SubnetId=SUBNET_ID
+        SubnetId=SUBNET_ID,
         MaxCount=1,
         MinCount=1
     )
