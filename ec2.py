@@ -192,14 +192,8 @@ def create_dynamic_instance(random_variable=None):
         ],
         SubnetId=subnet_id,
         #EbsOptimized=True,
-        NetworkInterfaces=[
-        {   'DeviceIndex': 0,
-            'NetworkInterfaceId': 'eni-0331c5e11c70144db'
-        },
-    ],
-
     )
-
+    
     #
     ## Waits for EC2 Instance to be running
     #
