@@ -190,9 +190,7 @@ def create_dynamic_instance(random_variable=None):
                 ]
             },
         ],
-        SubnetId=[
-            subnet_id,
-        ],
+        SubnetId=subnet_id
         #EbsOptimized=True,
         NetworkInterfaces=[
         {   'DeviceIndex': 0,
