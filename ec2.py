@@ -197,7 +197,7 @@ def create_dynamic_instance(random_variable=None):
         NetworkInterfaces=[
         {   'DeviceIndex': 0,
             'NetworkInterfaceId': 'eni-0331c5e11c70144db',
-            'SubnetId': 'sg-c832efba12'
+            'SubnetId': 'subnet-4802dd03'
         },
     ],
 
