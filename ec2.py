@@ -194,8 +194,8 @@ def create_dynamic_instance(random_variable=None):
         #EbsOptimized=True,
         NetworkInterfaces=[
         {
-            'NetworkInterfaceId': 'eni',
-            'SubnetId': 'subnet_id'
+            'NetworkInterfaceId': 'eni-0331c5e11c70144db',
+            'SubnetId': 'sg-c832efba'
         },
     ],
 
