@@ -210,15 +210,15 @@ def create_dynamic_instance(random_variable=None):
 
     print("System is Up!")
 
-    NetworkInterfaces=[
-        {
+NetworkInterfaces=[
+    {
         'DeviceIndex': 0,
         'DeleteOnTermination': False,
         'SubnetId' : 'subnet-4802dd03',
         'NetworkInterfaceId': 'eni-0331c5e11c70144db',
-        'AssociatePublicIpAddress': False,
-        },
-    ]
+        'AssociatePublicIpAddress': False            
+    },
+]
     ec2_instance_ip_address = describe_ec2_instance(create_instance[0].id)
 
     return create_instance[0].id, ec2_instance_ip_address, key_priv, key_name
