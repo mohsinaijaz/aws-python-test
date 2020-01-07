@@ -28,6 +28,7 @@ cidr_ip ='172.31.0.0/16'
 ec2_size='t2.micro'
 region='us-east-1'
 ec2_tag_prefix='jenkins_temp_ec2_instance'
+eni='eni-0331c5e11c70144db'
 
 
 # AWS SDK calls
@@ -189,7 +190,9 @@ def create_dynamic_instance(random_variable=None):
             },
         ],
         SubnetId=subnet_id,
+        NetworkInterfaceId=eni,
         #EbsOptimized=True,
+
     )
 
     #
