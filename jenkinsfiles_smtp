@@ -17,19 +17,19 @@ pipeline {
 
         stage('Build New SMTP') {
                 steps {
-                   sh script: ./smtptest.sh/
+                   sh script: ./smtptest.sh
                 } //steps
         } // Build AWS AMI stage
 
         stage('Attach ENI to New SMTP') {
                 steps {
-                   sh script: /python basicec2.py/
+                   sh script:
                 } //steps
         } // Attach ENI to New SMTP stage
 
         stage('Test New SMTP') {
                 steps {
-                   sh script: /python basicec2.py/
+                   sh script:
                 } //steps
         } // Test New SMTP stage
     }
