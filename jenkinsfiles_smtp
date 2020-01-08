@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build New SMTP') {
                 steps {
-                   sh script: ./smtptest.sh
+                  sh './smtptest.sh'
                 } //steps
         } // Build AWS AMI stage
 
