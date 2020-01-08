@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    environment {
+        AWS_ACCESS_KEY = credentials('JenkinsUser')
+
+
+       AWS_DEFAULT_REGION = 'us-east-1'
+       AWS_ACCESS_KEY_ID = "${AWS_ACCESS_KEY_USR}"
+       AWS_SECRET_ACCESS_KEY = "${AWS_ACCESS_KEY_PSW}"
+   }
+  stages {
+        stage('Detach ENI') {
+            steps {
+              sh 'python --version'
+            }
+        }
+
+        stage('Build New SMTP') {
+                steps {
+                   sh script: ./smtptest.sh/
+                } //steps
+        } // Build AWS AMI stage
+
+        stage('Attach ENI to New SMTP') {
+                steps {
+                   sh script: /python basicec2.py/
+                } //steps
+        } // Attach ENI to New SMTP stage
+
+        stage('Test New SMTP') {
+                steps {
+                   sh script: /python basicec2.py/
+                } //steps
+        } // Test New SMTP stage
+    }
+    post {
+        aborted {
+            script {
+                echo 'Not Done'
+            }
+        }
+        success {
+          script {
+            echo 'DONE'
+            }
+        }
+    }
+}
