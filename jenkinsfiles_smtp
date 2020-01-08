@@ -23,13 +23,13 @@ pipeline {
 
         stage('Attach ENI to New SMTP') {
                 steps {
-                   sh script:
+                   sh 'echo "Attach ENI to New SMTP"'
                 } //steps
         } // Attach ENI to New SMTP stage
 
         stage('Test New SMTP') {
                 steps {
-                   sh script:
+                   sh 'echo "Test New SMTP"'
                 } //steps
         } // Test New SMTP stage
     }
